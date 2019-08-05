@@ -3,7 +3,7 @@ package com.rgoteti.ds.binarytree;
 public class SameTree {
 	public static void main(String args[])
 	{
-		BinarTree bt = new BinarTree();
+		BinaryTree bt = new BinaryTree();
 		bt.root = new Node(10);
 		bt.root.left = new Node(12);
 		bt.root.right =  new Node(13);
@@ -11,7 +11,7 @@ public class SameTree {
 		bt.root.right.right = new Node(14);
 		bt.root.right.left.right = new Node(16);
 		
-		BinarTree bts = new BinarTree();
+		BinaryTree bts = new BinaryTree();
 		bts.root = new Node(10);
 		bts.root.left = new Node(12);
 		bts.root.right =  new Node(13);
@@ -19,25 +19,14 @@ public class SameTree {
 		bts.root.right.right = new Node(14);
 		bts.root.right.left.right = new Node(16);
 		
-		System.out.println(bt.isSameTree(bt.root, bts.root));
+		System.out.println(new ST().isSameTree(bt.root, bts.root));
 		//bt.inOrderTraversal(bt.root);
 	}
 }
 
 
-class BinarTree
+class ST extends BinaryTree
 {
-	Node root;
-	
-	public void inOrderTraversal(Node temp)
-	{
-		if(temp==null)
-			return;
-		inOrderTraversal(temp.left);
-		System.out.println(temp.data);
-		inOrderTraversal(temp.right);
-	}
-	
 	public boolean isSameTree(Node a, Node b)
 	{
 		if(a==null && b==null) return true;
@@ -49,22 +38,4 @@ class BinarTree
 		return false;
 	}
 }
-class Node
-{
-	int data;
-	Node left,right;
-	
-	public Node()
-	{	
-	}
-	public Node(int data)
-	{
-		this.data = data;
-		left = right = null;
-	}
-	public Node(int data, Node left, Node right) {	
-		this.data = data;
-		this.left = left;
-		this.right = right;
-	}	
-}
+
