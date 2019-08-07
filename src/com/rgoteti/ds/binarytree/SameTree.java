@@ -19,14 +19,10 @@ public class SameTree {
 		bts.root.right.right = new Node(14);
 		bts.root.right.left.right = new Node(16);
 		
-		System.out.println(new ST().isSameTree(bt.root, bts.root));
+		System.out.println(new SameTree().isSameTree(bt.root, bts.root));
 		//bt.inOrderTraversal(bt.root);
 	}
-}
-
-
-class ST extends BinaryTree
-{
+	
 	public boolean isSameTree(Node a, Node b)
 	{
 		if(a==null && b==null) return true;
@@ -38,4 +34,3 @@ class ST extends BinaryTree
 		return false;
 	}
 }
-

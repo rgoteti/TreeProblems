@@ -13,12 +13,9 @@ public class BTisBST {
 		bt.root.right.right = new Node(32);
 
 		//bt.inOrderTraversal(bt.root);
-		System.out.println(new ISBST().isBST(bt.root, Integer.MIN_VALUE, Integer.MAX_VALUE)); 
+		System.out.println(new BTisBST().isBST(bt.root, Integer.MIN_VALUE, Integer.MAX_VALUE)); 
 	}
-}
-
-class ISBST extends BinaryTree
-{
+	
 	public boolean isBST(Node node, int min, int max)
 	{
 		if(node==null) return true;
@@ -28,3 +25,5 @@ class ISBST extends BinaryTree
 			return false;
 	}
 }
+
+

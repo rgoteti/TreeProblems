@@ -12,14 +12,11 @@ public class BinaryTreeSize {
 		bt.root.right.right = new Node(14);
 		bt.root.right.left.right = new Node(16);
 		
-		System.out.println(new BTS().binaryTreeSize(bt.root));
-	}	
-}
+		System.out.println(new BinaryTreeSize().binaryTreeSize(bt.root));
+	}
 
-//Space complexity: It depends on the size of stack i.e height of binary tree
-//Time Complexity: O(n) as we are visiting all the nodes once.
-class BTS extends BinaryTree
-{
+	//Space complexity: It depends on the size of stack i.e height of binary tree
+	//Time Complexity: O(n) as we are visiting all the nodes once.
 	public int binaryTreeSize(Node node)
 	{
 		if(node==null)
