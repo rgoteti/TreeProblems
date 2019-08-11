@@ -1,15 +1,17 @@
 package com.rgoteti.ds.dynamicprogramming;
 
-public class Binarykanpsack {
+public class Binaryknapsack {
 
 	public static void main(String[] args) {
 		int weights[] =  { 2, 3, 1, 4 };
 		int profits[] =  { 4, 5, 3, 7 };
 		int capacity = 5;
-		System.out.println(new Binarykanpsack().bruteForce(capacity, 0, weights, profits));
+		Binaryknapsack kp = new Binaryknapsack();
+		System.out.println(kp.bruteForce(capacity, 0, weights, profits));
 		Integer[][] dp = new Integer[profits.length][capacity + 1];
-		System.out.println(new Binarykanpsack().topDownOrTabluation(capacity, 0, weights, profits, dp));
-		System.out.println(new Binarykanpsack().bottomUpOrMemoization(capacity, weights, profits));
+		System.out.println(kp.topDownOrMemoization(capacity, 0, weights, profits, dp));
+		int[][] dp1 = new int[profits.length][capacity + 1];
+		System.out.println(kp.bottomUpOrTabluation(capacity, weights, profits,dp1));
 	}
 	
 	public int bruteForce(int capacity, int currentIndex, int[] weights, int[] profits)
@@ -24,7 +26,7 @@ public class Binarykanpsack {
 	}
 
 	
-	public int topDownOrTabluation(int capacity, int currentIndex, int[] weights, int[] profits, Integer[][] dp)
+	public int topDownOrMemoization(int capacity, int currentIndex, int[] weights, int[] profits, Integer[][] dp)
 	{
 		if(capacity<=0 || currentIndex >= profits.length)
 			return 0;		
@@ -32,16 +34,15 @@ public class Binarykanpsack {
 		{
 			int profit1=0;
 			if(weights[currentIndex]<=capacity)
-				profit1 = profits[currentIndex]+topDownOrTabluation(capacity-weights[currentIndex], currentIndex+1, weights, profits,dp);			
-			int profit2 = topDownOrTabluation(capacity, currentIndex+1, weights, profits,dp);
+				profit1 = profits[currentIndex]+topDownOrMemoization(capacity-weights[currentIndex], currentIndex+1, weights, profits,dp);			
+			int profit2 = topDownOrMemoization(capacity, currentIndex+1, weights, profits,dp);
 			dp[currentIndex][capacity] =  Math.max(profit1, profit2);
 		}		
 		return dp[currentIndex][capacity];
 	}
 	
-	public int bottomUpOrMemoization(int capacity, int[] weights, int[] profits )
-	{
-	    int[][] dp = new int[profits.length][capacity + 1];
+	public int bottomUpOrTabluation(int capacity, int[] weights, int[] profits, int[][] dp )
+	{	    
 		if (capacity <= 0 || profits.length == 0 || weights.length != profits.length)
 		      return 0;		
 		for(int i=0;i<profits.length;i++)
